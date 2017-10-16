@@ -47,7 +47,7 @@ class DataHarvestController extends ActionController
         $dataHarvest->setServerSoftware($_SERVER['SERVER_SOFTWARE']);
         $dataHarvest->setDatabaseVersion($this->getDatabaseVersion());
         $dataHarvest->setApplicationContext((string)GeneralUtility::getApplicationContext());
-        $dataHarvest->setComposer(Bootstrap::usesComposerClassLoading());
+        $dataHarvest->setComposer($this->isComposer());
 
         // Get installed extensions (excluding system extensions) and add them to the data harvest
         $extensionRepository = $this->objectManager->get(ExtensionRepository::class);
@@ -64,19 +64,34 @@ class DataHarvestController extends ActionController
         $this->view->assign('value', $dataHarvest);
     }
 
+    /**
+     * For getting the database version we have to deal with different methods.
+     * Since TYPO3 v8 we get get the version via an abstraction layer which is
+     * more future prove.
+     * For v6 we need to perform a plain query and for v7 we have do have a method.
+     *
+     * @return string
+     */
     protected function getDatabaseVersion()
     {
+        $currentTYPO3Version = VersionNumberUtility::convertVersionNumberToInteger(TYPO3_version);
         $version = 'n/a';
 
-        // Check if TYPO3 version is lower than v8, because the database handling has changed since then.
-        if (VersionNumberUtility::convertVersionNumberToInteger(TYPO3_version) <= VersionNumberUtility::convertVersionNumberToInteger('8.0.0')) {
+        if ($currentTYPO3Version <= VersionNumberUtility::convertVersionNumberToInteger('7.0.0')) {
+            // TYPO3 < v7
+            $version = $GLOBALS['TYPO3_DB']->sql_fetch_assoc(
+                $GLOBALS['TYPO3_DB']->sql_query('SELECT @@version')
+            )['@@version'];
+        } else if ($currentTYPO3Version <= VersionNumberUtility::convertVersionNumberToInteger('8.0.0')) {
+            // TYPO3 < v8
             $version = $GLOBALS['TYPO3_DB']->getServerVersion();
         } else {
+            // TYPO3 >= 8
             $connectionPool = GeneralUtility::makeInstance(ConnectionPool::class);
             $version = $connectionPool->getConnectionByName(
                 // We only use the first connection, because we usally don't use more than
-                // a single database. In the future or when we build a bigger website with
-                // more than one database we can update this.
+                // one database. In the future or when we build a bigger website with more
+                // than one database we can update this to a more generic method.
                 $connectionPool->getConnectionNames()[0]
             )->getServerVersion();
         }
@@ -84,4 +99,18 @@ class DataHarvestController extends ActionController
         return $version;
     }
 
+    /**
+     * @return bool
+     */
+    protected function isComposer()
+    {
+        $composer = false;
+
+        // Check if TYPO3 version is higher or equal than v7, because TYPO3 is only installable via composer since v7.
+        if (VersionNumberUtility::convertVersionNumberToInteger(TYPO3_version) >= VersionNumberUtility::convertVersionNumberToInteger('7.0.0')) {
+            $composer = Bootstrap::usesComposerClassLoading();
+        }
+
+        return $composer;
+    }
 }
