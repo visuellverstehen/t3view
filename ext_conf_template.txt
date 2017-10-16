@@ -1,0 +1,2 @@
+# cat=basic/enable; type=string; label=Secret: Um die Software Informationen zu schützen, musst du das generierte Secret aus dem Backend hinterlegen.
+secret =
