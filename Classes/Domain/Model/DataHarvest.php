@@ -46,7 +46,7 @@ class DataHarvest
     /**
      * @return string
      */
-    public function getTypo3Version(): string
+    public function getTypo3Version()
     {
         return $this->typo3_version;
     }
@@ -54,7 +54,7 @@ class DataHarvest
     /**
      * @return string
      */
-    public function getPhpVersion(): string
+    public function getPhpVersion()
     {
         return $this->php_version;
     }
@@ -62,7 +62,7 @@ class DataHarvest
     /**
      * @return string
      */
-    public function getSitename(): string
+    public function getSitename()
     {
         return $this->sitename;
     }
@@ -78,7 +78,7 @@ class DataHarvest
     /**
      * @return string
      */
-    public function getServerSoftware(): string
+    public function getServerSoftware()
     {
         return $this->server_software;
     }
@@ -94,7 +94,7 @@ class DataHarvest
     /**
      * @return string
      */
-    public function getDatabaseVersion(): string
+    public function getDatabaseVersion()
     {
         return $this->database_version;
     }
@@ -110,7 +110,7 @@ class DataHarvest
     /**
      * @return string
      */
-    public function getApplicationContext(): string
+    public function getApplicationContext()
     {
         return $this->application_context;
     }
@@ -126,7 +126,7 @@ class DataHarvest
     /**
      * @return bool
      */
-    public function isComposer(): bool
+    public function isComposer()
     {
         return $this->composer;
     }
@@ -142,7 +142,7 @@ class DataHarvest
     /**
      * @return array
      */
-    public function getExtensions(): array
+    public function getExtensions()
     {
         return $this->extensions;
     }
