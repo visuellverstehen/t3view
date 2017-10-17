@@ -148,24 +148,16 @@ class DataHarvest
     }
 
     /**
-     * @param array $extensions
-     */
-    public function setExtensions(array $extensions)
-    {
-        $this->extensions = $extensions;
-    }
-
-    /**
-     * A single extension should follow this exact pattern:
+     * A single extension must follow this exact pattern:
      * [
      *     'key' => 't3view',
      *     'version' => '1.0.0'
      * ]
      *
-     * @param array $extension
+     * @param array $extensions
      */
-    public function addExtension(array $extension)
+    public function setExtensions(array $extensions)
     {
-        $this->extensions[] = $extension;
+        $this->extensions = $extensions;
     }
 }
