@@ -7,7 +7,8 @@ defined('TYPO3_MODE') || die();
     [
         'DataHarvest' => 'gatherData'
     ],
-    // non-cacheable action(s)
+    // We disable caching for the »gatherData« action to guarantee
+    // data timeliness.
     [
         'DataHarvest' => 'gatherData'
     ]
