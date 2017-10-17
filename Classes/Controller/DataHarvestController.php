@@ -58,9 +58,19 @@ class DataHarvestController extends ActionController
             ]);
         };
 
-        // \TYPO3\CMS\Extbase\Utility\DebuggerUtility::var_dump($this);
-        // \TYPO3\CMS\Extbase\Utility\DebuggerUtility::var_dump($dataHarvest);die();
+        // We change the default JsonView configuration to render the »$dataHarvest->extensions«
+        // attribute. By default the JsonView does not support the rendering of array or object
+        // attributes.
+        // Docs: https://github.com/TYPO3/TYPO3.CMS/blob/master/typo3/sysext/extbase/Classes/Mvc/View/JsonView.php#L60-L158
+        $this->view->setConfiguration([
+            'value' => [
+                '_descend' => [
+                    'extensions' => []
+                ]
+            ]
+        ]);
 
+        // The default JsonView only supports the rendering of variables named »value«.
         $this->view->assign('value', $dataHarvest);
     }
 
