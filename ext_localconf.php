@@ -14,6 +14,7 @@ defined('TYPO3_MODE') || die();
     ]
 );
 
+// Include TypoScript setup for accessing the action via /?type=5996
 \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addTypoScriptSetup('
     t3viewGatherDataHarvest = PAGE
     t3viewGatherDataHarvest {

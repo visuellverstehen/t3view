@@ -7,6 +7,11 @@ use TYPO3\CMS\Extbase\Mvc\View\JsonView;
 use VV\T3view\Domain\Model\DataHarvest;
 use VV\T3view\Service\SystemInformationService;
 
+/**
+ * Controller which will validate the request and
+ * creating a data harvest (object) which will
+ * then beeing output as JSON.
+ */
 class DataHarvestController extends ActionController
 {
     /**
@@ -24,7 +29,7 @@ class DataHarvestController extends ActionController
      * us to do some security checks before performing actual stuff.
      *
      * - Checks if the HTTP method is GET. Other methods are not allowed.
-     * - Checks if the request secret is valid.
+     * - Checks if the requests secret is the same as the stored secret.
      */
     public function initializeGatherDataAction() {
         //$configurationUtility = $this->objectManager->get(ConfigurationUtility::class);

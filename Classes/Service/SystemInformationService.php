@@ -11,6 +11,10 @@ use TYPO3\CMS\Core\Utility\VersionNumberUtility;
 use TYPO3\CMS\Extbase\Object\ObjectManager;
 use VV\T3view\Domain\Model\DataHarvest;
 
+/**
+ * Service for getting various system information as
+ * well as creating a data harvest (object).
+ */
 class SystemInformationService implements SingletonInterface
 {
     /**
@@ -24,7 +28,7 @@ class SystemInformationService implements SingletonInterface
         $dataHarvest->setDatabaseVersion(self::getDatabaseVersion());
         $dataHarvest->setApplicationContext(self::getApplicationContext());
         $dataHarvest->setComposer(self::isComposer());
-        $dataHarvest->setExtensions(self::getExtensions());
+        $dataHarvest->setExtensions(self::getExtensionVersions());
 
         return $dataHarvest;
     }
@@ -42,7 +46,7 @@ class SystemInformationService implements SingletonInterface
      *
      * @return array
      */
-    public static function getExtensions()
+    public static function getExtensionVersions()
     {
         $extensions = [];
         $extensionRepository = GeneralUtility::makeInstance(ObjectManager::class)->get(ExtensionRepository::class);
@@ -79,7 +83,7 @@ class SystemInformationService implements SingletonInterface
             // TYPO3 < v8
             $version = $GLOBALS['TYPO3_DB']->getServerVersion();
         } else {
-            // TYPO3 >= 8
+            // TYPO3 >= v8
             $connectionPool = GeneralUtility::makeInstance(ConnectionPool::class);
             $connection = $connectionPool->getConnectionByName(
                 // We only use the first connection, because we usally don't use more than
