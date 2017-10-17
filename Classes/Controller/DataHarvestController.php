@@ -33,7 +33,8 @@ class DataHarvestController extends ActionController
     }
 
     /**
-     * 
+     * Action that will return a DataHarvest object with a bunch of important
+     * information as JSON.
      */
     public function gatherDataAction()
     {

@@ -38,7 +38,7 @@ class SystemInformationService implements SingletonInterface
     }
 
     /**
-     * Get installed extensions (excluding system extensions) and add them to the data harvest
+     * Get installed extensions (excluding system extensions).
      *
      * @return array
      */
@@ -59,7 +59,7 @@ class SystemInformationService implements SingletonInterface
 
     /**
      * For getting the database version we have to deal with different methods.
-     * Since TYPO3 v8 we get get the version via an abstraction layer which is
+     * Since TYPO3 v8 we get the version via an abstraction layer which is
      * more future prove.
      * For v6 we need to perform a plain query and for v7 we have do have a method.
      *
@@ -94,14 +94,17 @@ class SystemInformationService implements SingletonInterface
     }
 
     /**
+     * Will return true for a composer instance or false if it isn't.
+     * We do a version comparison because versions older than TYPO3 v7 are not installable via Composer.
+     *
      * @return bool
      */
     public static function isComposer()
     {
+        $currentTYPO3Version = VersionNumberUtility::convertVersionNumberToInteger(TYPO3_version);
         $composer = false;
 
-        // Check if TYPO3 version is higher or equal than v7, because TYPO3 is only installable via composer since v7.
-        if (VersionNumberUtility::convertVersionNumberToInteger(TYPO3_version) >= VersionNumberUtility::convertVersionNumberToInteger('7.0.0')) {
+        if ($currentTYPO3Version >= VersionNumberUtility::convertVersionNumberToInteger('7.0.0')) {
             $composer = Bootstrap::usesComposerClassLoading();
         }
 
