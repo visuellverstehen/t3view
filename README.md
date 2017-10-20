@@ -1,6 +1,13 @@
 # t3view_extension
 This extension will provide serveral system information via an endpoint. In the client-server model context it represents the server.
 
+## Installation
+1. [Download](https://github.com/visuellverstehen/t3view_extension/archive/master.zip) a copy of the extension.
+2. Upload the extension in the `typo3conf/ext` folder of your desired instance.
+3. Open up the extension manager in the TYPO3 backend and active the extension.
+4. Add the secret from the t3view backend in the extension settings.
+5. Go to the t3view backend and verify the extension installation by clicking on the endpoint link.
+
 ## Endpoint
 The endpoint is usally `/index.php?type=5996` and secured with a hash / secret which is generated while creating a new instance in the backend. It will return a JSON object containing serveral system information, take a look at the example output below.
 The endpoint can be rewritten via [ReaLURL](https://github.com/dmitryd/typo3-realurl/wiki/Configuration-reference#filenameindexkeyvalues) but it's not mandatory.
