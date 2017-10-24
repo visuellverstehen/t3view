@@ -37,7 +37,7 @@ class DataHarvestController extends ActionController
     protected $view = null;
 
     /**
-     * This method will be dispatche before the actual method. This allows
+     * This method will be dispatched before the actual method. This allows
      * us to do some security checks before performing actual stuff.
      *
      * - Checks if the HTTP method is allowed. Other methods are not allowed.
