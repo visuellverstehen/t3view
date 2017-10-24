@@ -10,7 +10,7 @@ This extension will provide serveral system information via an endpoint. In the 
 
 ## Endpoint
 The endpoint is usally `/index.php?type=5996` and secured with a hash / secret which is generated while creating a new instance in the backend. It will return a JSON object containing serveral system information, take a look at the example output below.
-The endpoint can be rewritten via [ReaLURL](https://github.com/dmitryd/typo3-realurl/wiki/Configuration-reference#filenameindexkeyvalues) but it's not mandatory.
+The endpoint can be rewritten via [ReaLURL](https://github.com/dmitryd/typo3-realurl/wiki/Configuration-reference#filenameindexkeyvalues), but it's not mandatory.
 
 ## Security
 The endpoint is secured with a 60 character hash called secret. It is generated while creating a new instance in the backend using Laravel's `\Illuminate\Hashing\BcryptHasher::make()` method ([learn more about Laravel hashing](https://laravel.com/docs/5.5/hashing)) which uses the PHP [`password_hash()`](http://php.net/manual/de/function.password-hash.php) function with the `CRYPT_BLOWFISH` algorithm.
