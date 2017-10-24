@@ -6,16 +6,6 @@ class DataHarvest
     /**
      * @var string
      */
-    protected $typo3_version = TYPO3_version;
-
-    /**
-     * @var string
-     */
-    protected $php_version = PHP_VERSION;
-
-    /**
-     * @var string
-     */
     protected $sitename = '';
 
     /**
@@ -48,7 +38,7 @@ class DataHarvest
      */
     public function getTypo3Version()
     {
-        return $this->typo3_version;
+        return TYPO3_version;
     }
 
     /**
@@ -56,7 +46,7 @@ class DataHarvest
      */
     public function getPhpVersion()
     {
-        return $this->php_version;
+        return PHP_VERSION;
     }
 
     /**
