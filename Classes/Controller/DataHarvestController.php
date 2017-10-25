@@ -43,7 +43,8 @@ class DataHarvestController extends ActionController
      * - Checks if the HTTP method is allowed. Other methods are not allowed.
      * - Checks if the requests secret is the same as the stored secret.
      */
-    public function initializeGatherDataAction() {
+    public function initializeGatherDataAction()
+    {
         if (!in_array($this->request->getMethod(), self::ALLOWED_HTTP_METHODS)) {
             throw new StatusException(
                 HttpUtility::HTTP_STATUS_405,

@@ -79,7 +79,7 @@ class SystemInformationService implements SingletonInterface
             $version = $GLOBALS['TYPO3_DB']->sql_fetch_assoc(
                 $GLOBALS['TYPO3_DB']->sql_query('SELECT @@version')
             )['@@version'];
-        } else if ($currentTYPO3Version <= VersionNumberUtility::convertVersionNumberToInteger('8.0.0')) {
+        } elseif ($currentTYPO3Version <= VersionNumberUtility::convertVersionNumberToInteger('8.0.0')) {
             // TYPO3 < v8
             $version = $GLOBALS['TYPO3_DB']->getServerVersion();
         } else {
