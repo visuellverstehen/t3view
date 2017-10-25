@@ -1,8 +1,8 @@
 <?php
 
 $EM_CONF[$_EXTKEY] = [
-    'title' => '@TODO',
-    'description' => '@TODO',
+    'title' => 'T3view',
+    'description' => 'An extension that outputs system information as JSON',
     'category' => 'services',
     'author' => 'Rune Piper',
     'author_email' => 'rune.piper@visuellverstehen.de',

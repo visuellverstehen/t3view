@@ -1,7 +1,7 @@
 {
     "name": "visuel/t3view",
     "type": "typo3-cms-extension",
-    "description": "@TODO",
+    "description": "An extension that outputs system information as JSON",
     "homepage": "https://github.com/visuellverstehen/t3view_extension/",
     "license": [],
     "authors": [
