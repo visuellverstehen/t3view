@@ -72,7 +72,7 @@ class DataHarvest
      */
     public function setPhpVersion(string $phpVersion)
     {
-        $this->phpVersion;
+        $this->phpVersion = $phpVersion;
     }
 
     /**
