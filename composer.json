@@ -11,8 +11,14 @@
             "homepage": "https://www.visuellverstehen.de"
         }
     ],
+    "repositories": [
+        {
+            "type": "composer",
+            "url": "https://composer.typo3.org/"
+        }
+    ],
     "require": {
-        "typo3/cms-core": "^7.6.0 || ^8.7.0 || ^9.0.0"
+        "typo3/cms": "^7.6.0 || ^8.7.0 || 9.x-dev"
     },
     "autoload": {
         "psr-4": {
