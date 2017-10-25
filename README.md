@@ -2,7 +2,7 @@
 This extension will provide serveral system information via an endpoint. In the client-server model context it represents the server.
 
 ## Installation
-1. [Download](https://github.com/visuellverstehen/t3view_extension/archive/master.zip) a copy of the extension.
+1. [Download](https://github.com/visuellverstehen/t3view_extension/releases/latest) a copy of the extension.
 2. Upload the extension in the `typo3conf/ext` folder of your desired instance.
 3. Open up the extension manager in the TYPO3 backend and active the extension.
 4. Add the secret from the t3view backend in the extension settings.
@@ -18,7 +18,7 @@ You can also install the extension with composer. To do so add the following sni
             }
         ],
         "require": {
-            "visuel/t3view": "dev-master"
+            "visuel/t3view": "^1.0.0"
         }
     }
 
