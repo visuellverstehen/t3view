@@ -54,7 +54,7 @@ class DataHarvest
     /**
      * @param string $typo3Version
      */
-    public function setTypo3Version(string $typo3Version)
+    public function setTypo3Version($typo3Version)
     {
         $this->typo3Version = $typo3Version;
     }
@@ -70,7 +70,7 @@ class DataHarvest
     /**
      * @param string $phpVersion
      */
-    public function setPhpVersion(string $phpVersion)
+    public function setPhpVersion($phpVersion)
     {
         $this->phpVersion = $phpVersion;
     }
@@ -86,7 +86,7 @@ class DataHarvest
     /**
      * @param string $siteName
      */
-    public function setSiteName(string $siteName)
+    public function setSiteName($siteName)
     {
         $this->siteName = $siteName;
     }
@@ -102,7 +102,7 @@ class DataHarvest
     /**
      * @param string $serverSoftware
      */
-    public function setServerSoftware(string $serverSoftware)
+    public function setServerSoftware($serverSoftware)
     {
         $this->serverSoftware = $serverSoftware;
     }
@@ -118,7 +118,7 @@ class DataHarvest
     /**
      * @param string $databaseVersion
      */
-    public function setDatabaseVersion(string $databaseVersion)
+    public function setDatabaseVersion($databaseVersion)
     {
         $this->databaseVersion = $databaseVersion;
     }
@@ -134,7 +134,7 @@ class DataHarvest
     /**
      * @param string $applicationContext
      */
-    public function setApplicationContext(string $applicationContext)
+    public function setApplicationContext($applicationContext)
     {
         $this->applicationContext = $applicationContext;
     }
@@ -150,7 +150,7 @@ class DataHarvest
     /**
      * @param bool $usesComposer
      */
-    public function setUsesComposer(bool $usesComposer)
+    public function setUsesComposer($usesComposer)
     {
         $this->usesComposer = $usesComposer;
     }
@@ -172,7 +172,7 @@ class DataHarvest
      *
      * @param array $extensions
      */
-    public function setExtensions(array $extensions)
+    public function setExtensions($extensions)
     {
         $this->extensions = $extensions;
     }
