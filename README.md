@@ -18,7 +18,7 @@ You can also install the extension with composer. To do so add the following sni
             }
         ],
         "require": {
-            "visuel/t3view": "^1.0.0"
+            "visuel/t3view": "^1.0.0"
         }
     }
 
