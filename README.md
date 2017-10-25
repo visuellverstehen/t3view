@@ -10,7 +10,7 @@ This extension will provide serveral system information via an endpoint. In the 
 
 You can also install the extension with composer. To do so add the following snippet to your `composer.json`:
 
-    {
+    {
         "repositories": [
             {
                 "type": "vcs",
