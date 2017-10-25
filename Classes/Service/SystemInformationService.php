@@ -23,11 +23,13 @@ class SystemInformationService implements SingletonInterface
     public static function createDataHarvest()
     {
         $dataHarvest = new DataHarvest();
-        $dataHarvest->setSitename($GLOBALS['TYPO3_CONF_VARS']['SYS']['sitename']);
+        $dataHarvest->setTypo3Version(TYPO3_version);
+        $dataHarvest->setPhpVersion(PHP_VERSION);
+        $dataHarvest->setSiteName($GLOBALS['TYPO3_CONF_VARS']['SYS']['sitename']);
         $dataHarvest->setServerSoftware($_SERVER['SERVER_SOFTWARE']);
         $dataHarvest->setDatabaseVersion(self::getDatabaseVersion());
         $dataHarvest->setApplicationContext(self::getApplicationContext());
-        $dataHarvest->setComposer(self::isComposer());
+        $dataHarvest->setUsesComposer(self::usesComposer());
         $dataHarvest->setExtensions(self::getExtensionVersions());
 
         return $dataHarvest;
@@ -98,12 +100,12 @@ class SystemInformationService implements SingletonInterface
     }
 
     /**
-     * Will return true for a composer instance or false if it isn't.
+     * Will return true for an instance that uses composer or false if it isn't.
      * We do a version comparison because versions older than TYPO3 v7 are not installable via Composer.
      *
      * @return bool
      */
-    public static function isComposer()
+    public static function usesComposer()
     {
         $currentTYPO3Version = VersionNumberUtility::convertVersionNumberToInteger(TYPO3_version);
         $composer = false;

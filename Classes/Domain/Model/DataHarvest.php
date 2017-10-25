@@ -6,27 +6,37 @@ class DataHarvest
     /**
      * @var string
      */
-    protected $sitename = '';
+    protected $typo3Version = '';
 
     /**
      * @var string
      */
-    protected $server_software = '';
+    protected $phpVersion = '';
 
     /**
      * @var string
      */
-    protected $database_version = '';
+    protected $siteName = '';
 
     /**
      * @var string
      */
-    protected $application_context = '';
+    protected $serverSoftware = '';
+
+    /**
+     * @var string
+     */
+    protected $databaseVersion = '';
+
+    /**
+     * @var string
+     */
+    protected $applicationContext = '';
 
     /**
      * @var bool
      */
-    protected $composer = false;
+    protected $usesComposer = false;
 
     /**
      * @var array
@@ -38,7 +48,15 @@ class DataHarvest
      */
     public function getTypo3Version()
     {
-        return TYPO3_version;
+        return $this->typo3Version;
+    }
+
+    /**
+     * @param string $typo3Version
+     */
+    public function setTypo3Version(string $typo3Version)
+    {
+        $this->typo3Version = $typo3Version;
     }
 
     /**
@@ -46,23 +64,31 @@ class DataHarvest
      */
     public function getPhpVersion()
     {
-        return PHP_VERSION;
+        return $this->phpVersion;
+    }
+
+    /**
+     * @param string $phpVersion
+     */
+    public function setPhpVersion(string $phpVersion)
+    {
+        $this->phpVersion;
     }
 
     /**
      * @return string
      */
-    public function getSitename()
+    public function getSiteName()
     {
-        return $this->sitename;
+        return $this->siteName;
     }
 
     /**
-     * @param string $sitename
+     * @param string $siteName
      */
-    public function setSitename(string $sitename)
+    public function setSiteName(string $siteName)
     {
-        $this->sitename = $sitename;
+        $this->siteName = $siteName;
     }
 
     /**
@@ -70,15 +96,15 @@ class DataHarvest
      */
     public function getServerSoftware()
     {
-        return $this->server_software;
+        return $this->serverSoftware;
     }
 
     /**
-     * @param string $server_software
+     * @param string $serverSoftware
      */
-    public function setServerSoftware(string $server_software)
+    public function setServerSoftware(string $serverSoftware)
     {
-        $this->server_software = $server_software;
+        $this->serverSoftware = $serverSoftware;
     }
 
     /**
@@ -86,15 +112,15 @@ class DataHarvest
      */
     public function getDatabaseVersion()
     {
-        return $this->database_version;
+        return $this->databaseVersion;
     }
 
     /**
-     * @param string $database_version
+     * @param string $databaseVersion
      */
-    public function setDatabaseVersion(string $database_version)
+    public function setDatabaseVersion(string $databaseVersion)
     {
-        $this->database_version = $database_version;
+        $this->databaseVersion = $databaseVersion;
     }
 
     /**
@@ -102,31 +128,31 @@ class DataHarvest
      */
     public function getApplicationContext()
     {
-        return $this->application_context;
+        return $this->applicationContext;
     }
 
     /**
-     * @param string $application_context
+     * @param string $applicationContext
      */
-    public function setApplicationContext(string $application_context)
+    public function setApplicationContext(string $applicationContext)
     {
-        $this->application_context = $application_context;
+        $this->applicationContext = $applicationContext;
     }
 
     /**
      * @return bool
      */
-    public function isComposer()
+    public function getUsesComposer()
     {
-        return $this->composer;
+        return $this->usesComposer;
     }
 
     /**
-     * @param bool $composer
+     * @param bool $usesComposer
      */
-    public function setComposer(bool $composer)
+    public function setUsesComposer(bool $usesComposer)
     {
-        $this->composer = $composer;
+        $this->usesComposer = $usesComposer;
     }
 
     /**
