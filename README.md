@@ -8,6 +8,20 @@ This extension will provide serveral system information via an endpoint. In the 
 4. Add the secret from the t3view backend in the extension settings.
 5. Go to the t3view backend and verify the extension installation by clicking on the endpoint link.
 
+You can also install the extension with composer. To do so add the following snippet to your `composer.json`:
+
+    {
+        "repositories": [
+            {
+                "type": "vcs",
+                "url": "https://github.com/visuellverstehen/t3view_extension"
+            }
+        ],
+        "require": {
+            "visuel/t3view": "dev-master"
+        }
+    }
+
 ## Endpoint
 The endpoint is usally `/index.php?type=5996` and secured with a hash / secret which is generated while creating a new instance in the backend. It will return a JSON object containing serveral system information, take a look at the example output below.
 The endpoint can be rewritten via [ReaLURL](https://github.com/dmitryd/typo3-realurl/wiki/Configuration-reference#filenameindexkeyvalues), but it's not mandatory.
