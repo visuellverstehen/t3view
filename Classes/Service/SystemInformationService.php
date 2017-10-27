@@ -88,7 +88,7 @@ class SystemInformationService implements SingletonInterface
             // TYPO3 >= v8
             $connectionPool = GeneralUtility::makeInstance(ConnectionPool::class);
             $connection = $connectionPool->getConnectionByName(
-                // We only use the first connection, because we usally don't use more than
+                // We only use the first connection, because we usually don't use more than
                 // one database. In the future or when we build a bigger website with more
                 // than one database we can update this to a more generic method.
                 $connectionPool->getConnectionNames()[0]
