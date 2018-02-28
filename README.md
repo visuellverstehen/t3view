@@ -2,25 +2,10 @@
 This extension will provide serveral system information via an endpoint. In the client-server model context it represents the server.
 
 ## Installation
-1. [Download](https://github.com/visuellverstehen/t3view_extension/releases/latest) a copy of the extension.
-2. Upload the extension in `typo3conf/ext/t3view` of your desired instance. __Important: the foldername of the extension must be t3view!__
-3. Open up the extension manager in the TYPO3 backend and active the extension.
-4. Add the secret from the t3view backend in the extension settings.
-5. Go to the t3view backend and verify the extension installation by clicking on the endpoint link.
-
-You can also install the extension with composer. To do so add the following snippet to your `composer.json`:
-
-    {
-        "repositories": [
-            {
-                "type": "vcs",
-                "url": "https://github.com/visuellverstehen/t3view_extension"
-            }
-        ],
-        "require": {
-            "visuel/t3view": "^1.0.0"
-        }
-    }
+1. `composer require visuellverstehen/t3view`
+2. Open up the extension manager in the TYPO3 backend and active the extension.
+3. Add the secret from the t3view backend in the extension settings.
+4. Go to the t3view backend and verify the extension installation by clicking on the endpoint link.
 
 ## Endpoint
 The endpoint is usally `/index.php?type=5996` and secured with a hash / secret which is generated while creating a new instance in the backend. It will return a JSON object containing serveral system information, take a look at the example output below.

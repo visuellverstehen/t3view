@@ -1,13 +1,13 @@
 {
-    "name": "visuel/t3view",
+    "name": "visuellverstehen/t3view",
     "type": "typo3-cms-extension",
     "description": "An extension that outputs system information as JSON",
     "homepage": "https://github.com/visuellverstehen/t3view_extension/",
     "license": [],
     "authors": [
         {
-            "name": "Rune Piper",
-            "email": "rune.piper@visuellverstehen.de",
+            "name": "visuellverstehen",
+            "email": "kontakt@visuellverstehen.de",
             "homepage": "https://www.visuellverstehen.de"
         }
     ],
