@@ -26,6 +26,7 @@ defined('TYPO3_MODE') || die();
                 10.header = Content-Type: application/javascript;charset=UTF-8
             }
             xhtml_cleaning = 0
+            debug = 0
         }
 
         1000 = USER_INT
