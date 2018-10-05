@@ -1,6 +1,8 @@
 # t3view
 This extension will provide serveral system information via an endpoint. In the client-server model context it represents the server.
 
+[![Build Status](https://travis-ci.org/visuellverstehen/t3view.svg)](https://travis-ci.org/visuellverstehen/t3view)
+
 ## Installation
 1. `composer require visuellverstehen/t3view`
 2. Open up the extension manager in the TYPO3 backend and active the extension.

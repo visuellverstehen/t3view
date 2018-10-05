@@ -6,7 +6,7 @@ php:
 jobs:
   include:
     - stage: publish in TER
-      #if: tag IS present
+      if: tag IS present
       script:
         - |
           if [ -n "$TYPO3_ORG_USERNAME" ] && [ -n "$TYPO3_ORG_PASSWORD" ]; then
