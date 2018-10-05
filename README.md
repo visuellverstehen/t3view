@@ -1,4 +1,4 @@
-# t3view_extension
+# t3view
 This extension will provide serveral system information via an endpoint. In the client-server model context it represents the server.
 
 ## Installation
