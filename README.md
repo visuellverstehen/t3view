@@ -1,5 +1,5 @@
 # t3view
-This extension will provide serveral system information via an endpoint. In the client-server model context it represents the server.
+This extension will provide several system information via an endpoint. In the client-server model context it represents the server.
 
 [![Build Status](https://travis-ci.org/visuellverstehen/t3view.svg)](https://travis-ci.org/visuellverstehen/t3view)
 
@@ -10,7 +10,7 @@ This extension will provide serveral system information via an endpoint. In the 
 4. Go to the t3view backend and verify the extension installation by clicking on the endpoint link.
 
 ## Endpoint
-The endpoint is usally `/index.php?type=5996` and secured with a hash / secret which is generated while creating a new instance in the backend. It will return a JSON object containing serveral system information, take a look at the example output below.
+The endpoint is usally `/index.php?type=5996` and secured with a hash / secret which is generated while creating a new instance in the backend. It will return a JSON object containing several system information, take a look at the example output below.
 The endpoint can be rewritten via [ReaLURL](https://github.com/dmitryd/typo3-realurl/wiki/Configuration-reference#filenameindexkeyvalues), but it's not mandatory.
 
 ## Security
