@@ -54,9 +54,17 @@ class SystemInformationService implements SingletonInterface
         $extensionRepository = GeneralUtility::makeInstance(ObjectManager::class)->get(ExtensionRepository::class);
 
         foreach ($extensionRepository->findAllLoaded() as $extension) {
+            // Sometimes the extension version is empty,
+            // then an exception is thrown.
+            try {
+                $extensionVersion = ExtensionManagementUtility::getExtensionVersion($extension->getKey());
+            } catch (\TYPO3\CMS\Core\Package\Exception $exception) {
+                $extensionVersion = '';
+            }
+
             $extensions[] = [
                 'key' => $extension->getKey(),
-                'version' => ExtensionManagementUtility::getExtensionVersion($extension->getKey())
+                'version' => $extensionVersion
             ];
         };
 
