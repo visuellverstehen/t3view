@@ -1,9 +1,9 @@
 <?php
 namespace VV\T3view\Service;
 
-use TYPO3\CMS\About\Domain\Repository\ExtensionRepository;
 use TYPO3\CMS\Core\Core\Bootstrap;
 use TYPO3\CMS\Core\Database\ConnectionPool;
+use TYPO3\CMS\Core\Package\PackageManager;
 use TYPO3\CMS\Core\SingletonInterface;
 use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
@@ -51,21 +51,15 @@ class SystemInformationService implements SingletonInterface
     public static function getExtensionVersions()
     {
         $extensions = [];
-        $extensionRepository = GeneralUtility::makeInstance(ObjectManager::class)->get(ExtensionRepository::class);
+        $packageManger = GeneralUtility::makeInstance(ObjectManager::class)->get(PackageManager::class);
 
-        foreach ($extensionRepository->findAllLoaded() as $extension) {
-            // Sometimes the extension version is empty,
-            // then an exception is thrown.
-            try {
-                $extensionVersion = ExtensionManagementUtility::getExtensionVersion($extension->getKey());
-            } catch (\TYPO3\CMS\Core\Package\Exception $exception) {
-                $extensionVersion = '';
+        foreach ($packageManger->getActivePackages() as $package) {
+            if (!$package->isPartOfFactoryDefault() && $package->getPackageMetaData()->getVersion() !== TYPO3_version) {
+                $extensions[] = [
+                    'key' => $package->getPackageKey(),
+                    'version' => $package->getPackageMetaData()->getVersion()
+                ];
             }
-
-            $extensions[] = [
-                'key' => $extension->getKey(),
-                'version' => $extensionVersion
-            ];
         };
 
         return $extensions;

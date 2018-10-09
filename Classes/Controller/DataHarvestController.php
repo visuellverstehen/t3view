@@ -3,12 +3,15 @@ namespace VV\T3view\Controller;
 
 use TYPO3\CMS\Core\Error\Http\StatusException;
 use TYPO3\CMS\Core\Error\Http\UnauthorizedException;
+use TYPO3\CMS\Core\Configuration\ExtensionConfiguration;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Core\Utility\HttpUtility;
+use TYPO3\CMS\Core\Utility\VersionNumberUtility;
 use TYPO3\CMS\Extensionmanager\Utility\ConfigurationUtility;
 use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
 use TYPO3\CMS\Extbase\Mvc\View\JsonView;
 use VV\T3view\Domain\Model\DataHarvest;
+use VV\T3view\Exception\SecretMissingException;
 use VV\T3view\Service\SystemInformationService;
 
 /**
@@ -55,9 +58,30 @@ class DataHarvestController extends ActionController
         }
 
         // Getting the secret through the TYPO3 API instead of accessing it directly.
-        $configurationUtility = $this->objectManager->get(ConfigurationUtility::class);
-        $extensionConfiguration = $configurationUtility->getCurrentConfiguration(strtolower($this->extensionName));
-        $secret = $extensionConfiguration['secret']['value'];
+        if (VersionNumberUtility::convertVersionNumberToInteger(TYPO3_version) < VersionNumberUtility::convertVersionNumberToInteger('9.0.0')) {
+            $configurationUtility = $this->objectManager->get(ConfigurationUtility::class);
+            $extensionConfiguration = $configurationUtility->getCurrentConfiguration(strtolower($this->extensionName));
+
+            if (empty($extensionConfiguration['secret']['value'])) {
+                throw new SecretMissingException(
+                    'The secret is missing',
+                    1539074504
+                );
+            }
+
+            $secret = $extensionConfiguration['secret']['value'];
+        } else {
+            $extensionConfiguration = $this->objectManager->get(ExtensionConfiguration::class)->get(strtolower($this->extensionName));
+
+            if (empty($extensionConfiguration['secret'])) {
+                throw new SecretMissingException(
+                    'The secret is missing',
+                    1539074504
+                );
+            }
+
+            $secret = $extensionConfiguration['secret'];
+        }
 
         // Authenticate request
         if ($secret !== GeneralUtility::_GET('secret')) {
