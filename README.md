@@ -1,7 +1,7 @@
+[![Build Status](https://travis-ci.org/visuellverstehen/t3view.svg)](https://travis-ci.org/visuellverstehen/t3view)
+
 # t3view
 This extension will provide several system information via an endpoint. In the client-server model context it represents the server.
-
-[![Build Status](https://travis-ci.org/visuellverstehen/t3view.svg)](https://travis-ci.org/visuellverstehen/t3view)
 
 ## Installation
 1. `composer require visuellverstehen/t3view`
