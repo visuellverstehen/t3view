@@ -1,5 +1,5 @@
 [![Build Status](https://travis-ci.org/visuellverstehen/t3view.svg)](https://travis-ci.org/visuellverstehen/t3view)
-
+[![Downloads](https://img.shields.io/packagist/dt/visuellverstehen/t3view.svg)](https://packagist.org/packages/visuellverstehen/t3view)
 # t3view
 This extension will provide several system information via an endpoint. In the client-server model context it represents the server.
 
